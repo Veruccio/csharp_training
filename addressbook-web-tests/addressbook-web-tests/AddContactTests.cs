@@ -46,7 +46,7 @@ namespace WebAddressbookTests
         public void AddContactTest()
         {
             OpenHomePage();
-            Login("admin", "secret");
+            Login(new AccountData("admin", "secret"));
             ClickAddNew();
             ContactData group = new ContactData("Vera", "Long");
             group.Firstname = "Vera";
@@ -61,12 +61,12 @@ namespace WebAddressbookTests
             driver.Navigate().GoToUrl(baseURL + "addressbook/");
         }
 
-        private void Login(string username, string password)
+        private void Login(AccountData account)
         {
             driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(username);
+            driver.FindElement(By.Name("user")).SendKeys(account.Username);
             driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(password);
+            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.CssSelector("input[type=\"submit\"]")).Click();
         }
 

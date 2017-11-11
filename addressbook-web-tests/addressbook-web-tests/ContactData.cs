@@ -10,8 +10,6 @@
             this.firstname = Firstname;
             this.lastname = Lastname;
         }
-
-
         public string Firstname
         {
             get

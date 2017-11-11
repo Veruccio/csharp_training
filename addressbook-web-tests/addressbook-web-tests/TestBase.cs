@@ -12,7 +12,7 @@ namespace WebAddressbookTests
     public class TestBase
     {
         protected IWebDriver driver;
-        private StringBuilder verificationErrors;
+        protected StringBuilder verificationErrors;
         protected string baseURL;
 
         [SetUp]

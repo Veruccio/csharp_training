@@ -11,7 +11,7 @@ namespace WebAddressbookTests
     {
 
         [Test]
-        protected void GroupCreationTest()
+        public void GroupCreationTest()
         {
             OpenHomePage();
             Login(new AccountData("admin", "secret"));

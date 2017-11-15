@@ -14,7 +14,7 @@ namespace WebAddressbookTests
         public void AddContactTest()
         {
             OpenHomePage();
-            Login(new AccountData("admin", "secret"));
+            loginHelper.Login(new AccountData("admin", "secret"));
             ClickAddNew();
             ContactData group = new ContactData("Vera", "Long");
             group.Firstname = "Vera";

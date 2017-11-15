@@ -21,7 +21,7 @@ namespace WebAddressbookTests
             group.Lastname = "Long";
             FillNewContact(group);
             SubmitNewContact();
-            Logout();
+            loginHelper.Logout();
         }
     }
 }

@@ -18,18 +18,20 @@ namespace WebAddressbookTests
             this.driver = driver;
         }
 
-        public void FillNewContact(ContactData account)
+        public ContactHelper FillNewContact(ContactData account)
         {
             driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(account.Firstname);
             driver.FindElement(By.Name("lastname")).Clear();
             driver.FindElement(By.Name("lastname")).SendKeys(account.Lastname);
             // ERROR: Caught exception [Error: Dom locators are not implemented yet!]
+            return this;
         }
 
-        public void SubmitNewContact()
+        public ContactHelper SubmitNewContact()
         {
             driver.FindElement(By.LinkText("home")).Click();
+            return this;
         }
     }
 }

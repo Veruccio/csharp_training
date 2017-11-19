@@ -7,6 +7,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 
+
 namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
@@ -16,6 +17,14 @@ namespace WebAddressbookTests
         {
         }
 
+        public ContactHelper Remove(int index)
+        {
+            manager.Navigator.OpenHomePage();
+
+            SelectContact(index);
+            RemoveContact();
+            return this;
+        }
 
 
         public ContactHelper FillNewContact(ContactData account)
@@ -32,6 +41,20 @@ namespace WebAddressbookTests
         public ContactHelper SubmitNewContact()
         {
             driver.FindElement(By.LinkText("home")).Click();
+            return this;
+        }
+
+        public ContactHelper SelectContact(object index)
+        {
+            driver.FindElement(By.Id("1")).Click();
+            return this;
+
+        }
+
+        public ContactHelper RemoveContact()
+        {
+            driver.FindElement(By.Name("DeleteSel()")).Click();
+            driver.SwitchTo().Alert().Accept();
             return this;
         }
     }

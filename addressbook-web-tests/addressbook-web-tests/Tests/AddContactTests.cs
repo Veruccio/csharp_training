@@ -22,5 +22,18 @@ namespace WebAddressbookTests
                 .SubmitNewContact();
             app.Auth.Logout();
         }
+
+        [Test]
+        public void AddEmptyContactTest()
+        {
+            app.Navigator.ClickAddNew();
+            ContactData group = new ContactData("", "");
+            group.Firstname = "";
+            group.Lastname = "";
+            app.Contacts
+                .FillNewContact(group)
+                .SubmitNewContact();
+            app.Auth.Logout();
+        }
     }
 }

@@ -12,20 +12,47 @@ namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
     {
-
         public ContactHelper(ApplicationManager manager) : base(manager)
         {
         }
 
-        public ContactHelper Remove(int index)
+        public ContactHelper CreateNewContact(ContactData contact)
         {
             manager.Navigator.OpenHomePage();
 
-            SelectContact(index);
+            InitNewContact();
+            FillNewContact(contact);
+            SubmitNewContact();
+            return this;
+        }
+      
+
+        public ContactHelper Modify(int v, ContactData newData)
+        {
+            manager.Navigator.OpenHomePage();
+
+            SelectContact(v);
+            EditContact();
+            FillNewContact(newData);
+            SubmitContactModification();
+            return this;
+        }
+
+        public ContactHelper Remove(int v)
+        {
+            manager.Navigator.OpenHomePage();
+
+            SelectContact(v);
             RemoveContact();
             return this;
         }
 
+
+        public ContactHelper InitNewContact()
+        {
+            driver.FindElement(By.LinkText("add new")).Click();
+            return this;
+        }
 
         public ContactHelper FillNewContact(ContactData account)
         {
@@ -36,7 +63,6 @@ namespace WebAddressbookTests
             // ERROR: Caught exception [Error: Dom locators are not implemented yet!]
             return this;
         }
-
    
         public ContactHelper SubmitNewContact()
         {
@@ -46,9 +72,20 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContact(object index)
         {
-            driver.FindElement(By.Id("1")).Click();
+            driver.FindElement(By.Id("v")).Click();
             return this;
+        }
 
+        public ContactHelper EditContact()
+        {
+            driver.FindElement(By.Name("Edit")).Click();
+            return this;
+        }
+
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.Name("Update")).Click();
+            return this;
         }
 
         public ContactHelper RemoveContact()

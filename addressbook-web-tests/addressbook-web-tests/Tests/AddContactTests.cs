@@ -13,27 +13,21 @@ namespace WebAddressbookTests
         [Test]
         public void AddContactTest()
         {
-            app.Navigator.ClickAddNew();
-            ContactData group = new ContactData("Vera", "Long");
-            group.Firstname = "Vera";
-            group.Lastname = "Long";
-            app.Contacts
-                .FillNewContact(group)
-                .SubmitNewContact();
-            app.Auth.Logout();
+            ContactData contact = new ContactData("Vera", "Long");
+            contact.Firstname = "Vera";
+            contact.Lastname = "Long";
+
+            app.Contacts.CreateNewContact(contact);
         }
 
         [Test]
         public void AddEmptyContactTest()
         {
-            app.Navigator.ClickAddNew();
-            ContactData group = new ContactData("", "");
-            group.Firstname = "";
-            group.Lastname = "";
-            app.Contacts
-                .FillNewContact(group)
-                .SubmitNewContact();
-            app.Auth.Logout();
+            ContactData contact = new ContactData("", "");
+            contact.Firstname = "";
+            contact.Lastname = "";
+
+            app.Contacts.CreateNewContact(contact);
         }
     }
 }

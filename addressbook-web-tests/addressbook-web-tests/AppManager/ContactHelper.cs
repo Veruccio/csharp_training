@@ -9,14 +9,13 @@ using OpenQA.Selenium.Firefox;
 
 namespace WebAddressbookTests
 {
-    public class ContactHelper
+    public class ContactHelper : HelperBase
     {
-        private IWebDriver driver;
 
-        public ContactHelper(IWebDriver driver)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         {
-            this.driver = driver;
         }
+
 
         public ContactHelper FillNewContact(ContactData account)
         {

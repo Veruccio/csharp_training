@@ -19,7 +19,6 @@ namespace WebAddressbookTests
             group.Header = "ddd";
             group.Footer = "fff";
 
-            app.Navigator.GoToGroupsPage();
             app.Groups.Create(group);
         }
 
@@ -30,7 +29,6 @@ namespace WebAddressbookTests
             group.Header = "";
             group.Footer = "";
 
-            app.Navigator.GoToGroupsPage();
             app.Groups.Create(group);
         }
     }

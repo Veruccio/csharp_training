@@ -15,7 +15,23 @@ namespace WebAddressbookTests
         {
         }
 
-    public GroupHelper FillGroupForm(GroupData group)
+        public GroupHelper Create(GroupData group)
+        {
+            InitGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            ReturnToGroupsPage();
+            return this;
+        }
+
+        public GroupHelper InitGroupCreation()
+        {
+            driver.FindElement(By.Name("new")).Click();
+            return this;
+        }
+
+
+        public GroupHelper FillGroupForm(GroupData group)
         {
             driver.FindElement(By.Name("group_name")).Clear();
             driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
@@ -26,16 +42,6 @@ namespace WebAddressbookTests
             return this;
         }
 
-        internal void Modify(int v, GroupData newData)
-        {
-            throw new NotImplementedException();
-        }
-
-        public GroupHelper InitGroupCreation()
-        {
-            driver.FindElement(By.Name("new")).Click();
-            return this;
-        }
 
         public GroupHelper SubmitGroupCreation()
         {
@@ -58,7 +64,6 @@ namespace WebAddressbookTests
         public GroupHelper ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
             return this;
         }
     }

@@ -17,6 +17,7 @@ namespace WebAddressbookTests
         }
 
 
+
         public ContactHelper FillNewContact(ContactData account)
         {
             driver.FindElement(By.Name("firstname")).Clear();
@@ -27,6 +28,7 @@ namespace WebAddressbookTests
             return this;
         }
 
+   
         public ContactHelper SubmitNewContact()
         {
             driver.FindElement(By.LinkText("home")).Click();

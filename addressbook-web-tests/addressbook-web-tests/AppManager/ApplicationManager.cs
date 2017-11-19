@@ -18,6 +18,7 @@ namespace WebAddressbookTests
         protected NavigationHelper navigator;
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
+       
 
         public ApplicationManager()
         {

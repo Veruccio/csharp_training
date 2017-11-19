@@ -26,6 +26,11 @@ namespace WebAddressbookTests
             return this;
         }
 
+        internal void Modify(int v, GroupData newData)
+        {
+            throw new NotImplementedException();
+        }
+
         public GroupHelper InitGroupCreation()
         {
             driver.FindElement(By.Name("new")).Click();
@@ -38,6 +43,18 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public GroupHelper SelectGroup(int index)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" +index+ "]")).Click();
+            return this;
+        }
+
+        public GroupHelper RemoveGroup()
+        {
+            driver.FindElement(By.Name("delete")).Click();
+            return this;
+        }
+        
         public GroupHelper ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();

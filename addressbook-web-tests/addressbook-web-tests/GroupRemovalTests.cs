@@ -5,25 +5,24 @@ using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class GroupCreationTests : TestBase
+    public class  GroupRemovalTests: TestBase
     {
-
+       
         [Test]
-        public void GroupCreationTest()
+        public void GroupRemovalTest()
         {
             app.Navigator.GoToGroupsPage();
-            GroupData group = new GroupData("aaa");
-            group.Header = "ddd";
-            group.Footer = "fff";
             app.Groups
-                .InitGroupCreation()
-                .FillGroupForm(group)
-                .SubmitGroupCreation()
+                .SelectGroup(1)
+                .RemoveGroup()
                 .ReturnToGroupsPage();
         }
     }
 }
+    
+

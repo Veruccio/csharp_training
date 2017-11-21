@@ -22,7 +22,7 @@ namespace WebAddressbookTests
         public ApplicationManager()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost/";
+            baseURL = "http://localhost";
 
             loginHelper = new LoginHelper(this);
             navigator = new NavigationHelper(this, baseURL);
@@ -91,7 +91,7 @@ namespace WebAddressbookTests
             options.BrowserExecutableLocation = @"c:\Program Files\Mozilla Firefox\firefox.exe";
             options.UseLegacyImplementation = true;
             driver = new FirefoxDriver(options);
-            baseURL = "http://localhost/";
+            baseURL = "http://localhost";
         }
     }
 }

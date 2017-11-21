@@ -32,7 +32,7 @@ namespace WebAddressbookTests
             manager.Navigator.OpenHomePage();
 
             SelectContact(v);
-            EditContact();
+            EditContact(v);
             FillNewContact(newData);
             SubmitContactModification();
             return this;
@@ -70,15 +70,15 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper SelectContact(object index)
+        public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.Id("v")).Click();
+            driver.FindElement(By.Id(" + index + ")).Click();
             return this;
         }
 
-        public ContactHelper EditContact()
+        public ContactHelper EditContact(int index)
         {
-            driver.FindElement(By.Name("Edit")).Click();
+            driver.FindElement(By.Id(" + index + ")).Click();
             return this;
         }
 

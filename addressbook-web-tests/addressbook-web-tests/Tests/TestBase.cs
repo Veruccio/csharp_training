@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
 
 namespace WebAddressbookTests
 {
     public class TestBase
     {
-       
         protected ApplicationManager app;
 
         [SetUp]
@@ -20,6 +20,7 @@ namespace WebAddressbookTests
 
             app.Navigator.OpenHomePage();
             app.Auth.Login(new AccountData("admin", "secret"));
+
         }
 
         [TearDown]

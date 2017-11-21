@@ -76,6 +76,7 @@ namespace WebAddressbookTests
             return this;
         }
 
+
         public ContactHelper EditContact(int index)
         {
             driver.FindElement(By.Id(" + index + ")).Click();

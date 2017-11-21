@@ -21,7 +21,7 @@ public class NavigationHelper : HelperBase
 
         public void OpenHomePage()
         {
-            driver.Navigate().GoToUrl(baseURL + "/addressbook/");
+            driver.Navigate().GoToUrl(baseURL + "addressbook/");
         }
 
         public void GoToGroupsPage()

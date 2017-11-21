@@ -55,6 +55,7 @@ namespace WebAddressbookTests
             }
         }
 
+
         public LoginHelper Auth
         {
             get

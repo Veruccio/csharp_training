@@ -72,14 +72,14 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.Id(" + index + ")).Click();
+            driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
             return this;
         }
 
 
         public ContactHelper EditContact(int index)
         {
-            driver.FindElement(By.Id(" + index + ")).Click();
+            driver.FindElement(By.XPath("(//table[@id='maintable']/tbody/tr["+index+"]")).Click();
             return this;
         }
 
@@ -91,8 +91,8 @@ namespace WebAddressbookTests
 
         public ContactHelper RemoveContact()
         {
-            driver.FindElement(By.Name("DeleteSel()")).Click();
-            driver.SwitchTo().Alert().Accept();
+            driver.FindElement(By.XPath("(//input[@name='update'])[3]")).Click();
+            //driver.SwitchTo().Alert().Accept();
             return this;
         }
     }

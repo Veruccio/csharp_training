@@ -58,36 +58,20 @@ namespace WebAddressbookTests
         public ContactHelper FillNewContact(ContactData account)
         {
 
-            Fill(By.Name("locator"), account.Firstname);
-            driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(account.Lastname);
+            Type(By.Name("firstname"), account.Firstname);
+            Type(By.Name("lastname"), account.Lastname);
             // ERROR: Caught exception [Error: Dom locators are not implemented yet!]
             return this;
         }
 
-        public Fill(By locator, string text);
-    
+        public ContactHelper Type(By locator, string text)
+        {
+            driver.FindElement(locator).Clear();
+            driver.FindElement(locator).SendKeys(text);
+            return this;
+        }
 
-
-
-
-
-
-        { driver.FindElement(By.Name(locator).Clear();
-
-        diver.FindElement(By.Name(locator).SendKeys(account.Firstname);
-
-
-    }
-
-
-}
-
-         
-
-
-
-    public ContactHelper SubmitNewContact()
+        public ContactHelper SubmitNewContact()
         {
             driver.FindElement(By.LinkText("home")).Click();
             return this;

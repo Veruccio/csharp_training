@@ -58,18 +58,16 @@ namespace WebAddressbookTests
         public GroupHelper FillGroupForm(GroupData group)
         {
             Type(By.Name("group_name"), group.Name);
-
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
+            Type(By.Name("group_header"), group.Header);
+            Type(By.Name("group_footer"), group.Footer);
             return this;
         }
 
-        private void Type(By locator, string text)
+        public GroupHelper Type(By locator, string text)
         {
             driver.FindElement(locator).Clear();
             driver.FindElement(locator).SendKeys(text);
+            return this;
         }
 
         public GroupHelper SubmitGroupCreation()

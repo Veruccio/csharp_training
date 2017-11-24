@@ -75,6 +75,7 @@
     <Compile Include="Tests\GroupCreationTests.cs" />
     <Compile Include="Tests\AddContactTests.cs" />
     <Compile Include="Tests\TestBase.cs" />
+    <Compile Include="Tests\TestSuiteFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -64,13 +64,6 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper Type(By locator, string text)
-        {
-            driver.FindElement(locator).Clear();
-            driver.FindElement(locator).SendKeys(text);
-            return this;
-        }
-
         public ContactHelper SubmitNewContact()
         {
             driver.FindElement(By.LinkText("home")).Click();

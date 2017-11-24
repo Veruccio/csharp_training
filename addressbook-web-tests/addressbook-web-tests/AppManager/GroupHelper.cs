@@ -37,7 +37,6 @@ namespace WebAddressbookTests
             return this;
         }
 
-
         public GroupHelper Remove(int p)
         {
             manager.Navigator.GoToGroupsPage();
@@ -63,12 +62,6 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public GroupHelper Type(By locator, string text)
-        {
-            driver.FindElement(locator).Clear();
-            driver.FindElement(locator).SendKeys(text);
-            return this;
-        }
 
         public GroupHelper SubmitGroupCreation()
         {

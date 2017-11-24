@@ -11,7 +11,7 @@ namespace WebAddressbookTests
 {
     [TestFixture]
 
-    public class ContactRemovalTests : TestBase
+    public class ContactRemovalTests : AuthTestBase
     {
 
         [Test]

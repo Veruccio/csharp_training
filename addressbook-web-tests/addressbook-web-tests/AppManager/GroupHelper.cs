@@ -11,6 +11,7 @@ namespace WebAddressbookTests
 {
     public class GroupHelper : HelperBase
     {
+
         public GroupHelper(ApplicationManager manager) : base(manager)
         {
         }
@@ -29,6 +30,7 @@ namespace WebAddressbookTests
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
+
             SelectGroup(p);
             InitGroupModification();
             FillGroupForm(newData);
@@ -69,11 +71,18 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public GroupHelper SelectGroup(int index)
+        public void SelectGroup(int index)
         {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" +index+ "]")).Click();
-            return this;
+            if (IsElementPresent(By.XPath("//input[@name='selected[]']")))
+            {
+                {
+                    app.Groups.Create();
+                }
+            }
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
         }
+
+
 
         public GroupHelper RemoveGroup()
         {

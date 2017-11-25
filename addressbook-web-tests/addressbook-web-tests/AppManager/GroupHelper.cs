@@ -30,13 +30,13 @@ namespace WebAddressbookTests
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
-
             SelectGroup(p);
             InitGroupModification();
             FillGroupForm(newData);
             SubmitGroupModification();
             ReturnToGroupsPage();
             return this;
+
         }
 
         public GroupHelper Remove(int p)
@@ -71,18 +71,24 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public void SelectGroup(int index)
+        public GroupHelper SelectGroup(int index)
         {
-            if (IsElementPresent(By.XPath("//input[@name='selected[]']")))
+            if (IsElementPresent(By.CssSelector("span.group")))
             {
-                {
-                    app.Groups.Create();
-                }
+                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
             }
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            else
+            {
+                GroupData group = new GroupData("aaa");
+                group.Header = "ddd";
+                group.Footer = "fff";
+
+                Create(group);
+                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+                return this;
+            }
+            return this;
         }
-
-
 
         public GroupHelper RemoveGroup()
         {

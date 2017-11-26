@@ -75,7 +75,7 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContact(int index)
         {
-            if (IsElementPresent(By.XPath("(//img[@alt='Details']")))
+            if (IsElementPresent(By.CssSelector("img[alt=\"Details\"]")))
             {
                 driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[2]/td/input")).Click();
             }
@@ -94,9 +94,9 @@ namespace WebAddressbookTests
 
         public ContactHelper EditContact(int index)
         {
-            if (IsElementPresent(By.XPath("(//img[@alt='Details']")))
+            if (IsElementPresent(By.CssSelector("img[alt=\"Details\"]")))
             {
-                driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
+                driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
             }
             else
             {
@@ -105,7 +105,7 @@ namespace WebAddressbookTests
                 contact.Lastname = "Long";
 
                 CreateNewContact(contact);
-                driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
+                driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
                 return this;
             }
             return this;

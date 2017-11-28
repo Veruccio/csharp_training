@@ -12,17 +12,22 @@ namespace WebAddressbookTests
 {
     [TestFixture]
 
-    public class  GroupRemovalTests: AuthTestBase
+    public class GroupRemovalTests : AuthTestBase
     {
-       
+
         [Test]
 
         public void GroupRemovalTest()
         {
+            Assert.IsTrue(app.Groups.IsGroupPresent());
+
             app.Groups.Remove(1);
+
         }
     }
 }
+
+
 
     
 

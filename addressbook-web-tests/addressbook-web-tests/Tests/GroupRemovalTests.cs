@@ -19,10 +19,11 @@ namespace WebAddressbookTests
 
         public void GroupRemovalTest()
         {
-            Assert.IsTrue(app.Groups.IsGroupPresent());
+            app.Navigator.GoToGroupsPage();
+
+            Assert.IsTrue(app.Groups.IsGroupCreated());
 
             app.Groups.Remove(1);
-
         }
     }
 }

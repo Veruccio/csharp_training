@@ -102,21 +102,23 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public bool IsGroupPresent()
+        public void GroupCreated()
         {
-            if (IsElementPresent(By.CssSelector("span.group")))
+            if (IsGroupCreated())
             {
-                return true;
+                return;
             }
-            else
-            {
-                GroupData group = new GroupData("aaa");
-                group.Header = "ddd";
-                group.Footer = "fff";
 
-                Create(group);
-                return false;
-            }
+            GroupData group = new GroupData("aaa");
+            group.Header = "ddd";
+            group.Footer = "fff";
+
+            Create(group);
+        }
+
+        public bool IsGroupCreated()
+        {
+            return IsElementPresent(By.CssSelector("span.group"));
         }
     }
 }

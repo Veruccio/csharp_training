@@ -14,7 +14,9 @@ namespace WebAddressbookTests
         [Test]
         public void GroupModificationTest()
         {
+            app.Navigator.GoToGroupsPage();
 
+            Assert.IsTrue(app.Groups.IsGroupCreated());
 
             GroupData newData = new GroupData("zzz");
             newData.Header = "www";
@@ -24,6 +26,8 @@ namespace WebAddressbookTests
         }
     }
 }
+
+
     
 
         

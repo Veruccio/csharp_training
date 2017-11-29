@@ -27,6 +27,7 @@ namespace WebAddressbookTests
             return this;
         }
 
+
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
@@ -120,5 +121,20 @@ namespace WebAddressbookTests
         {
             return IsElementPresent(By.CssSelector("span.group"));
         }
+
+        public List<GroupData> GetGroupList()
+        {
+            List<GroupData> groups = new List<GroupData>();
+
+            manager.Navigator.GoToGroupsPage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+            foreach (IWebElement element in elements)
+            {
+               groups.Add(new GroupData(element.Text));
+            }
+            return groups;
+
+        }
+
     }
 }

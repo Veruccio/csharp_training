@@ -74,39 +74,13 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContact(int index)
         {
-            if (IsElementPresent(By.CssSelector("img[alt=\"Details\"]")))
-            {
-                driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[2]/td/input")).Click();
-            }
-            else
-            {
-                ContactData contact = new ContactData("Vera", "Long");
-                contact.Firstname = "Vera";
-                contact.Lastname = "Long";
-
-                CreateNewContact(contact);
-                driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
-                return this;
-            }
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[2]/td/input")).Click();
             return this;
         }
 
         public ContactHelper EditContact(int index)
         {
-            if (IsElementPresent(By.CssSelector("img[alt=\"Details\"]")))
-            {
-                driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
-            }
-            else
-            {
-                ContactData contact = new ContactData("Vera", "Long");
-                contact.Firstname = "Vera";
-                contact.Lastname = "Long";
-
-                CreateNewContact(contact);
-                driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
-                return this;
-            }
+            driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
             return this;
         }
 
@@ -129,17 +103,38 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public List<ContactData> GetContactsList()
+        public void ContactCreated()
         {
-            List<ContactData> contacts = new List<ContactData>();
-            manager.Navigator.OpenHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.entry"));
-            foreach (IWebElement element in elements)
+            if (IsContactCreated())
             {
-                ContactData contact = new ContactData(element.Text);
-                contacts.Add(contact);
+                return;
             }
-            return contacts;
+
+            ContactData contact = new ContactData("Vera", "Long");
+            contact.Firstname = "Vera";
+            contact.Lastname = "Long";
+
+            CreateNewContact(contact);
         }
+
+        public bool IsContactCreated()
+        {
+            return IsElementPresent(By.CssSelector("td.center"));
+        }
+
+
+
+        //public List<ContactData> GetContactsList()
+        //{
+        //List<ContactData> contacts = new List<ContactData>();
+        // manager.Navigator.OpenHomePage();
+        //ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.entry"));
+        //foreach (IWebElement element in elements)
+        //{
+        //ContactData contact = new ContactData(element.Text);
+        //contacts.Add(contact);
+        //}
+        //return contacts;
+        //}
     }
 }

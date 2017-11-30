@@ -22,7 +22,15 @@ namespace WebAddressbookTests
         {
             app.Navigator.GoToGroupsPage();
 
-            Assert.IsTrue(app.Groups.IsGroupCreated());
+            if (!app.Groups.IsGroupCreated())
+            {
+                GroupData group = new GroupData("vera");
+                group.Header = "my";
+                group.Footer = "group";
+
+
+                app.Groups.Create(group);
+            }
 
             app.Groups.Remove(1);
         }

@@ -17,11 +17,20 @@ namespace WebAddressbookTests
         {
             app.Navigator.GoToGroupsPage();
 
-            Assert.IsTrue(app.Groups.IsGroupCreated());
+           if (!app.Groups.IsGroupCreated())
+            {
+                GroupData group = new GroupData("vera");
+                group.Header = "my";
+                group.Footer = "group";
 
-            GroupData newData = new GroupData("zzz");
-            newData.Header = "www";
-            newData.Footer = "qqq";
+
+                app.Groups.Create(group);
+
+            }
+
+            GroupData newData = new GroupData("leo");
+            newData.Header = "new";
+            newData.Footer = "long";
 
             app.Groups.Modify(1, newData);
         }

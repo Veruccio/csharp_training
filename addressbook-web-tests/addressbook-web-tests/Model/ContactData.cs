@@ -30,7 +30,7 @@ namespace WebAddressbookTests
                 return true;
             }
             return Firstname == other.Firstname;
-            return Lastname == other.Lastname;
+            //return Lastname == other.Lastname;
         }
 
         public string Firstname

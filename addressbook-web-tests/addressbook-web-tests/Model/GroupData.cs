@@ -30,10 +30,10 @@ namespace WebAddressbookTests
             return Name == other.Name;
         }
 
-        public int GetHashCode()
-        {
-            return Name.GetHashCode();
-        }
+        //public int GetHashCode()
+       // {
+            //return Name.GetHashCode();
+        //}
 
 
         public string Name

@@ -17,7 +17,7 @@ namespace WebAddressbookTests
         {
             app.Navigator.GoToGroupsPage();
 
-           if (!app.Groups.IsGroupCreated())
+            if (!app.Groups.IsGroupCreated())
             {
                 GroupData group = new GroupData("vera");
                 group.Header = "my";
@@ -25,14 +25,22 @@ namespace WebAddressbookTests
 
 
                 app.Groups.Create(group);
-
             }
+
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
 
             GroupData newData = new GroupData("leo");
             newData.Header = "new";
             newData.Footer = "long";
 
-            app.Groups.Modify(1, newData);
+            app.Groups.Modify(0, newData);
+
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+
+            oldGroups[0].Name = newData.Name;
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
         }
     }
 }

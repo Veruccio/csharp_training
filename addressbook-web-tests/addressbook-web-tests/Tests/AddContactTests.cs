@@ -18,13 +18,16 @@ namespace WebAddressbookTests
             contact.Firstname = "Vera";
             contact.Lastname = "Long";
 
-            //List<ContactData> oldContacts = app.Contacts.GetContactsList();
+            List<ContactData> oldContacts = app.Contacts.GetContactsList();
 
             app.Contacts.CreateNewContact(contact);
 
-            //List<ContactData> newContacts = app.Contacts.GetContactsList();
-            //Assert.AreEqual(oldContacts.Count + 1, newContacts.Count);
+            List<ContactData> newContacts = app.Contacts.GetContactsList();
 
+            oldContacts.Add(contact);
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
         }
 
         [Test]
@@ -34,13 +37,16 @@ namespace WebAddressbookTests
             contact.Firstname = "";
             contact.Lastname = "";
 
-            //List<ContactData> oldContacts = app.Contacts.GetContactsList();
+            List<ContactData> oldContacts = app.Contacts.GetContactsList();
 
             app.Contacts.CreateNewContact(contact);
 
-            //List<ContactData> newContacts = app.Contacts.GetContactsList();
-            //Assert.AreEqual(oldContacts.Count + 1, newContacts.Count);
+            List<ContactData> newContacts = app.Contacts.GetContactsList();
 
+            oldContacts.Add(contact);
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }

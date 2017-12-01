@@ -123,22 +123,21 @@ namespace WebAddressbookTests
         }
 
 
+        public List<ContactData> GetContactsList()
+        {
+            string[] ContactDetails = new string[] { "firstname", "lastname" };
 
-        //public List<ContactData> GetContactsList()
-        //{
-        //List<ContactData> contacts = new List<ContactData>();
+            List<ContactData> contact = new List<ContactData>();
 
-        //manager.Navigator.OpenHomePage();
+            manager.Navigator.OpenHomePage();
 
-        //ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.entry"));
-        //foreach (IWebElement element in elements)
-            //{
-                //ContactData contact = new 
-                //ContactData(element.Text);
-                //contacts.Add(contact);
+            ICollection <IWebElement> elements  = driver.FindElements(By.Name("entry"));
 
-           // }
-           // return contacts;
+            foreach (IWebElement element in elements)
+            {
+                contact.Add(new ContactData(element.Text));
+            }
+           return contact;
         }
     }
-//}
+}

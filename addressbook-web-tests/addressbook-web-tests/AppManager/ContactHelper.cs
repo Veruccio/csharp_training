@@ -131,7 +131,7 @@ namespace WebAddressbookTests
 
             manager.Navigator.OpenHomePage();
 
-            ICollection <IWebElement> elements  = driver.FindElements(By.Name("entry"));
+            ICollection <IWebElement> elements  = driver.FindElements(By.TagName("tr"));
 
             foreach (IWebElement element in elements)
             {

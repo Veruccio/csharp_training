@@ -12,7 +12,6 @@ namespace WebAddressbookTests
     {
         private string firstname;
         private string lastname;
-        private object contactdetails;
         private string text;
 
         public ContactData(string firstname, string lastname)
@@ -36,18 +35,22 @@ namespace WebAddressbookTests
             {
                 return true;
             }
-            return ContactDetails == other.contactdetails;
+            return firstname == other.Firstname;
+            return lastname == other.Lastname;
         }
 
         public override int GetHashCode()
         {
-            return 0;
+            return Firstname.GetHashCode();
+            return Lastname.GetHashCode();
         }
 
         public override string ToString()
         {
-            return "contactdetails=" + ContactDetails;
+            return "Firstname=" + Firstname;
+            return "Lastname=" + Lastname;
         }
+
 
         public int CompareTo(ContactData other)
         {
@@ -55,7 +58,8 @@ namespace WebAddressbookTests
             {
                return 1;
             }
-            return ContactDetails.CompareTo(other.ContactDetails);
+            return Firstname.CompareTo(other.Firstname);
+            return Lastname.CompareTo(other.Lastname);
         }
 
         public string Firstname
@@ -79,18 +83,6 @@ namespace WebAddressbookTests
             set
             {
                 lastname = value;
-            }
-        }
-
-        public object ContactDetails
-        {
-            get
-            {
-                return contactdetails;
-            }
-            set
-            {
-                contactdetails = value;
             }
         }
     }

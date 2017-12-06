@@ -23,7 +23,6 @@ namespace WebAddressbookTests
                 group.Header = "my";
                 group.Footer = "group";
 
-
                 app.Groups.Create(group);
             }
 

@@ -122,22 +122,28 @@ namespace WebAddressbookTests
             return IsElementPresent(By.CssSelector("td.center"));
         }
 
+        private List<ContactData> contactCache = null;
 
         public List<ContactData> GetContactsList()
         {
-            string[] ContactDetails = new string[] { "firstname", "lastname" };
 
-            List<ContactData> contact = new List<ContactData>();
-
-            manager.Navigator.OpenHomePage();
-
-            ICollection <IWebElement> elements  = driver.FindElements(By.TagName("tr"));
-
-            foreach (IWebElement element in elements)
+            if (contactCache == null)
             {
-                contact.Add(new ContactData(element.Text));
+                contactCache = new List<ContactData>();
+
+                manager.Navigator.OpenHomePage();
+
+                ICollection<IWebElement> elements = driver.FindElements(By.TagName ("td"));
+
+                foreach (IWebElement element in elements)
+                {
+                    contactCache.Add(new ContactData(element.Text));
+                    {
+                        Id = element.FindElement(By.TagName("input")).GetAttribute("value");
+                    }
+                }
             }
-           return contact;
+            return new List<ContactData> (contactCache);
         }
     }
 }

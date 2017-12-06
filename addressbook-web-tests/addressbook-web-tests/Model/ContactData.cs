@@ -11,11 +11,49 @@ namespace WebAddressbookTests
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string text;
+        private string allPhones;
 
         public ContactData(string firstname, string lastname)
         {
             Firstname = firstname;
             Lastname = lastname ;
+        }
+
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Id { get; set; }
+        public string Address { get; set; }
+        public string HomePhone { get; set; }
+        public string MobilePhone { get; set; }
+        public string WorkPhone { get; set; }
+
+        public string AllPhones
+        {
+            get
+            {
+                if (allPhones != null)
+                {
+                    return allPhones;
+                }
+                else
+                {
+                    return (CleanUp(HomePhone) + CleanUp(WorkPhone) + CleanUp(MobilePhone)).Trim();
+                }
+            }
+            set
+            {
+                allPhones = value;
+            }
+        }
+
+        private string CleanUp(string phone)
+        {
+            if (phone == null || phone =="")
+            {
+                return "";
+            }
+            return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+
         }
 
         public ContactData(string text)
@@ -33,20 +71,18 @@ namespace WebAddressbookTests
             {
                 return true;
             }
-            return firstname == other.Firstname;
-            return lastname == other.Lastname;
+            return Firstname == other.Firstname
+                && Lastname == other.Lastname;
         }
 
         public override int GetHashCode()
         {
-            return Firstname.GetHashCode();
-            return Lastname.GetHashCode();
+            return (Firstname + "" + Lastname).GetHashCode();
         }
 
         public override string ToString()
         {
-            return "Firstname=" + Firstname;
-            return "Lastname=" + Lastname;
+            return (Firstname + "" + Lastname).ToString();
         }
 
 
@@ -56,15 +92,7 @@ namespace WebAddressbookTests
             {
                return 1;
             }
-            return Firstname.CompareTo(other.Firstname);
-            return Lastname.CompareTo(other.Lastname);
+            return (Firstname + "" + Lastname).CompareTo(other);
         }
-
-        public string Firstname { get; set; }
-
-        public string Lastname { get; set; }
-
-        public string Id { get; set; }
-
     }
 }

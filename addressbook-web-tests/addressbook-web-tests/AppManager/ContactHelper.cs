@@ -138,7 +138,11 @@ namespace WebAddressbookTests
             {
                 contactCache = new List<ContactData>();
                 manager.Navigator.OpenHomePage();
-                ICollection<IWebElement> elements = driver.FindElements(By.TagName ("td"));
+                ICollection<IWebElement> elements = driver.FindElements(By.Name ("entry"));
+                IList<IWebElement> cells = driver.FindElements(By.TagName("td"));
+                var lastname = cells[1].Text;
+                var firstname = cells[2].Text;
+
                 foreach (IWebElement element in elements)
                 {
                     contactCache.Add(new ContactData(element.Text) 

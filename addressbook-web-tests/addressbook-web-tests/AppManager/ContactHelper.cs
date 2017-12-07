@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -138,7 +139,7 @@ namespace WebAddressbookTests
             {
                 contactCache = new List<ContactData>();
                 manager.Navigator.OpenHomePage();
-                ICollection<IWebElement> elements = driver.FindElements(By.Name ("entry"));
+                ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
                 IList<IWebElement> cells = driver.FindElements(By.TagName("td"));
                 var lastname = cells[1].Text;
                 var firstname = cells[2].Text;
@@ -196,5 +197,17 @@ namespace WebAddressbookTests
                 WorkPhone = workPhone
             };
         }
+
+
+        public ContactData GetContactInformationFromDetailsForm(int index)
+        {
+            manager.Navigator.OpenHomePage();
+            driver.FindElement(By.CssSelector("img[alt=\"Details\"]")).Click();
+
+            ICollection<IWebElement> elements = driver.FindElements(By.Id("container"));
+            string lastName = elements[1].Text;
+            string firstName = elements[2].Text;
+        }
+
     }
 }

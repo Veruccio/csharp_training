@@ -145,7 +145,6 @@ namespace WebAddressbookTests
                     });
                 }
             }
-
             return new List<GroupData> (groupCache);
         }
 

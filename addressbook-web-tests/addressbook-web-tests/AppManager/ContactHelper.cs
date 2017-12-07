@@ -170,6 +170,7 @@ namespace WebAddressbookTests
             string address = cells[3].Text;
             string allPhones = cells[5].Text;
 
+
             return new ContactData(firstName, lastName)
             {
                 Address = address,

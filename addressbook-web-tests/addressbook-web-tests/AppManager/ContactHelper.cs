@@ -111,6 +111,13 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public void ShowContactDetails(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+            .FindElements(By.TagName("td"))[6]
+            .FindElement(By.TagName("a")).Click();
+        }
+
         public void ContactCreated()
         {
             if (IsContactCreated())
@@ -203,12 +210,9 @@ namespace WebAddressbookTests
         public ContactData GetContactInformationFromDetailsForm(int index)
         {
             manager.Navigator.OpenHomePage();
-            driver.FindElement(By.CssSelector("img[alt=\"Details\"]")).Click();
+            ShowContactDetails(0);
 
-            ICollection<IWebElement> elements = driver.FindElements(By.Id("container"));
-            string lastName = elements[1].Text;
-            string firstName = elements[2].Text;
+            string contactDetails = driver.FindElement(By.Id("content")).GetAttribute("value");
         }
-
     }
 }

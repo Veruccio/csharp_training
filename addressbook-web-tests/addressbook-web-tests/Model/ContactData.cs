@@ -47,6 +47,26 @@ namespace WebAddressbookTests
             }
         }
 
+        public string ContactDetails
+        {
+            get
+            {
+                if (ContactDetails != null)
+                {
+                    return ContactDetails;
+                }
+                else
+                {
+                    return (CleanUp(HomePhone) + CleanUp(WorkPhone) + CleanUp(MobilePhone)).Trim();
+                }
+            }
+            set
+            {
+                ContactDetails = value;
+            }
+        }
+
+
         private string CleanUp(string phone)
         {
             if (phone == null || phone =="")

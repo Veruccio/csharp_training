@@ -28,12 +28,12 @@ namespace WebAddressbookTests
 
         public void TestDetailsContactInformation()
         {
-            ContactData fromTable = app.Contacts.GetContactInformationFromTable(0);
+            ContactData fromForm = app.Contacts.GetContactInformationFromEditForm(0);
             ContactData fromDetails = app.Contacts.GetContactInformationFromDetailsForm(0);
 
-            Assert.AreEqual(fromTable, fromDetails);
-            Assert.AreEqual(fromTable.Address, fromDetails.Address);
-            Assert.AreEqual(fromTable.AllPhones, fromDetails.AllPhones);
+            Assert.AreEqual(fromForm, fromDetails);
+            Assert.AreEqual(fromForm.Address, fromDetails.Address);
+            Assert.AreEqual(fromForm.AllPhones, fromDetails.AllPhones);
         }
     }
 }

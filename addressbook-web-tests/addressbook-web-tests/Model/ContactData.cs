@@ -13,6 +13,7 @@ namespace WebAddressbookTests
     {
         private string text;
         private string allPhones;
+        private string contactDetails;
 
         public ContactData(string firstname, string lastname)
         {
@@ -57,7 +58,9 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return (CleanUp(HomePhone) + CleanUp(WorkPhone) + CleanUp(MobilePhone)).Trim();
+                    return (CleanUp(Firstname) + CleanUp(Lastname) 
+                        + CleanUp(Address) + CleanUp(Address) + CleanUp(HomePhone) 
+                        + CleanUp(WorkPhone) + CleanUp(MobilePhone)).Trim();
                 }
             }
             set

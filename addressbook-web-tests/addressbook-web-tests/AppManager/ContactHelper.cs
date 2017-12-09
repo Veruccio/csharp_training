@@ -212,7 +212,12 @@ namespace WebAddressbookTests
             manager.Navigator.OpenHomePage();
             ShowContactDetails(0);
 
-            string contactDetails = driver.FindElement(By.Id("content")).GetAttribute("value");
+            string ContactDetails = driver.FindElement(By.Id("content")).GetAttribute("value");
+
+            return new ContactData(ContactDetails);
+            {
+
+            }
         }
     }
 }

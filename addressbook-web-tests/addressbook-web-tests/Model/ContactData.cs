@@ -105,7 +105,7 @@ namespace WebAddressbookTests
 
         public override string ToString()
         {
-            return (Firstname + "" + Lastname).ToString();
+            return "firstname=" + Firstname +  "lastname=" + Lastname;
         }
 
 

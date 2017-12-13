@@ -141,7 +141,6 @@ namespace WebAddressbookTests
 
         public List<ContactData> GetContactsList()
         {
-
             if (contactCache == null)
             {
                 contactCache = new List<ContactData>();

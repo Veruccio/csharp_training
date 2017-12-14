@@ -1,9 +1,17 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
+using Excel = Microsoft.Office.Interop.Excel;
 using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+
 
 namespace WebAddressbookTests
 {
@@ -24,7 +32,16 @@ namespace WebAddressbookTests
                 return contacts;
         }
 
-        [Test, TestCaseSource("RandomContactDataProvider")]
+
+        public static IEnumerable<ContactData> ContactDataFromJSonFile()
+        {
+            return JsonConvert.DeserializeObject<List<ContactData>>(
+                File.ReadAllText(@"contacts.json"));
+        }
+
+
+
+        [Test, TestCaseSource("ContactDataFromJSonFile")]
 
         public void AddContactTest(ContactData contact)
         {

@@ -28,7 +28,6 @@ namespace WebAddressbookTests
             return this;
         }
 
-
         public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.OpenHomePage();
@@ -146,16 +145,12 @@ namespace WebAddressbookTests
                 contactCache = new List<ContactData>();
                 manager.Navigator.OpenHomePage();
                 ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
-                IList<IWebElement> cells = driver.FindElements(By.TagName("td"));
-                var lastname = cells[1].Text;
-                var firstname = cells[2].Text;
-
                 foreach (IWebElement element in elements)
                 {
-                    contactCache.Add(new ContactData(element.Text) 
-                    {
-                        Id = element.FindElement(By.Name("entry")).GetAttribute("value")
-                    });
+                    IList<IWebElement> cells = driver.FindElements(By.TagName("td"));
+                    string Id = element.FindElement(By.Name("entry")).GetAttribute("value");
+                    var lastName = cells[1].Text;
+                    var firstName = cells[2].Text;
                 }
             }
             return new List<ContactData> (contactCache);
@@ -175,7 +170,6 @@ namespace WebAddressbookTests
             string firstName = cells[2].Text;
             string address = cells[3].Text;
             string allPhones = cells[5].Text;
-
 
             return new ContactData(firstName, lastName)
             {

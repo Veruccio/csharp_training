@@ -69,7 +69,6 @@ namespace WebAddressbookTests
             }
         }
 
-
         private string CleanUp(string phone)
         {
             if (phone == null || phone =="")
@@ -107,7 +106,6 @@ namespace WebAddressbookTests
         {
             return "firstname=" + Firstname +  "lastname=" + Lastname;
         }
-
 
         public int CompareTo(ContactData other)
         {

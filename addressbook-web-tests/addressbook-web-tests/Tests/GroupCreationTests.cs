@@ -83,8 +83,6 @@ namespace WebAddressbookTests
         }
 
 
-
-
         [Test, TestCaseSource("GroupDataFromExcelFile")]
 
         public void GroupCreationTest(GroupData group)

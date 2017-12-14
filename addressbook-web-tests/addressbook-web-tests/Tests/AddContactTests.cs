@@ -32,13 +32,18 @@ namespace WebAddressbookTests
                 return contacts;
         }
 
+        public static IEnumerable<ContactData> ContactDataFromXmlFile()
+        {
+            return (List<ContactData>)
+                new XmlSerializer(typeof(List<ContactData>))
+                .Deserialize(new StreamReader(@"contacts.xml"));
+        }
 
         public static IEnumerable<ContactData> ContactDataFromJSonFile()
         {
             return JsonConvert.DeserializeObject<List<ContactData>>(
                 File.ReadAllText(@"contacts.json"));
         }
-
 
 
         [Test, TestCaseSource("ContactDataFromJSonFile")]

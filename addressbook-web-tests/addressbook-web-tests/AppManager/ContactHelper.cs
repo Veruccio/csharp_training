@@ -205,11 +205,11 @@ namespace WebAddressbookTests
             manager.Navigator.OpenHomePage();
             ShowContactDetails(0);
 
-            string ContactDetails = driver.FindElement(By.Id("content")).GetAttribute("value");
+            string сontactDetails = driver.FindElement(By.Id("content")).Text;
 
-            return new ContactData(ContactDetails);
+            return new ContactData(null, null);
             {
-
+                ContactDetails = contactDetails;
             }
         }
     }

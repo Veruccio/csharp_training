@@ -13,7 +13,7 @@ namespace WebAddressbookTests
     {
         private string text;
         private string allPhones;
-        private string contactDetails;
+        private object contactDetails;
 
         public ContactData(string firstname, string lastname)
         {
@@ -52,7 +52,7 @@ namespace WebAddressbookTests
         {
             get
             {
-                if (ContactDetails != null)
+                if (contactDetails != null)
                 {
                     return ContactDetails;
                 }
@@ -78,10 +78,6 @@ namespace WebAddressbookTests
             return Regex.Replace(phone, "[ -()]", "") + "\r\n"; 
         }
 
-        public ContactData(string text)
-        {
-            this.text = text;
-        }
 
         public bool Equals(ContactData other)
         {

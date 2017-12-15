@@ -23,7 +23,7 @@ namespace WebAddressbookTests
             List<ContactData> contacts = new List<ContactData>();
             for (int i = 0; i < 5; i++)
             {
-                contacts.Add(new ContactData(GenerateRandomString(30))
+                contacts.Add(new ContactData(GenerateRandomString(80), GenerateRandomString(80))
                 {
                     Firstname = GenerateRandomString(80),
                     Lastname = GenerateRandomString(80)

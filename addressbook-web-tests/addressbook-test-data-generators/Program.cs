@@ -12,33 +12,63 @@ using WebAddressbookTests;
 
 namespace addressbook_test_data_generators
 {
-    //WRITE GROUPS TO FILE
 
-    class GroupsProgram
+    class Program
     {
         static void Main(string[] args)
         {
-            int count = Convert.ToInt32(args[0]);
-            string filename = args[1];
-            string format = args[2];
+
+            string type = args[0];
+            int count = Convert.ToInt32(args[1]);
+            string filename = args[2];
+            string format = args[3];
 
             List<GroupData> groups = new List<GroupData>();
-            for (int i = 0; i < count; i++)
+            List<ContactData> contacts = new List<ContactData>();
+
+            //TYPE - GROUPS OR CONTACTS?
+
+            if (type == "groups")
             {
-                groups.Add(new GroupData(TestBase.GenerateRandomString(10))
+                for (int i = 0; i < count; i++)
                 {
-                    Header = TestBase.GenerateRandomString(10),
-                    Footer = TestBase.GenerateRandomString(10)
-                });
+                    groups.Add(new GroupData(TestBase.GenerateRandomString(10))
+                    {
+                        Header = TestBase.GenerateRandomString(10),
+                        Footer = TestBase.GenerateRandomString(10)
+                    });
+                }
             }
 
-            if (format == "excel")
+            else if (type == "contacts")
             {
-                writeGroupsToExcelFile(groups, filename);
+                for (int i = 0; i < count; i++)
+                {
+                    contacts.Add(new ContactData(TestBase.GenerateRandomString(10), TestBase.GenerateRandomString(10))
+                    {
+                        Firstname = TestBase.GenerateRandomString(10),
+                        Lastname = TestBase.GenerateRandomString(10)
+                    });
+
+                }
             }
+
+            else
+            {
+                System.Console.Out.Write("Unrecognized type " + format);
+
+            }
+
+            //FORMAT
+
+            if (format == "excel")
+                {
+                    writeGroupsToExcelFile(groups, filename);
+                }
             else
             {
                 StreamWriter writer = new StreamWriter(filename);
+
                 if (format == "csv")
                 {
                     writeGroupsToCsvFile(groups, writer);
@@ -46,10 +76,12 @@ namespace addressbook_test_data_generators
                 else if (format == "xml")
                 {
                     writeGroupsToXmlFile(groups, writer);
+                    writeContactsToXmlFile(contacts, writer);
                 }
                 else if (format == "json")
                 {
                     writeGroupsToJsonFile(groups, writer);
+                    writeContactsToJsonFile(contacts, writer);
                 }
                 else
                 {
@@ -58,6 +90,8 @@ namespace addressbook_test_data_generators
                 writer.Close();
             }
         }
+
+        //GROUPS
 
         static void writeGroupsToExcelFile(List<GroupData> groups, string filename)
         {
@@ -101,43 +135,9 @@ namespace addressbook_test_data_generators
         {
             writer.Write(JsonConvert.SerializeObject(groups, Newtonsoft.Json.Formatting.Indented));
         }
-    }
 
-    // WRITE CONTACTS TO FILE
 
-    class ContactsProgram
-    {
-        static void Main(string[] args)
-        {
-            int count = Convert.ToInt32(args[0]);
-            StreamWriter writer = new StreamWriter(args[1]);
-            string format = args[2];
-
-            List<ContactData> contacts = new List<ContactData>();
-            for (int i = 0; i < count; i++)
-            {
-                contacts.Add(new ContactData(TestBase.GenerateRandomString(10))
-                {
-                    Firstname = TestBase.GenerateRandomString(10),
-                    Lastname = TestBase.GenerateRandomString(10)
-                });
-            }
-
-            if (format == "xml")
-            {
-                writeContactsToXmlFile(contacts, writer);
-            }
-            else if (format == "json")
-            {
-                writeContactsToJsonFile(contacts, writer);
-            }
-            else
-            {
-                System.Console.Out.Write("Unrecognized format " + format);
-            }
-            writer.Close();
-        }
-
+        //CONTACTS
 
         static void writeContactsToXmlFile(List<ContactData> contacts, StreamWriter writer)
         {
@@ -150,4 +150,6 @@ namespace addressbook_test_data_generators
         }
     }
 }
+
+
 

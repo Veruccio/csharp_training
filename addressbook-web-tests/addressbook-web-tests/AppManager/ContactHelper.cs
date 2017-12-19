@@ -137,6 +137,7 @@ namespace WebAddressbookTests
         }
 
         private List<ContactData> contactCache = null;
+        private string contactDetails;
 
         public List<ContactData> GetContactsList()
         {
@@ -207,10 +208,10 @@ namespace WebAddressbookTests
 
             string сontactDetails = driver.FindElement(By.Id("content")).Text;
 
-            return new ContactData(null, null);
+            return new ContactData(null, null)
             {
-                ContactDetails = contactDetails;
-            }
+                ContactDetails = contactDetails
+            };
         }
     }
 }

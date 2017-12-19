@@ -11,7 +11,6 @@ namespace WebAddressbookTests
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
-        private string text;
         private string allPhones;
         private object contactDetails;
 

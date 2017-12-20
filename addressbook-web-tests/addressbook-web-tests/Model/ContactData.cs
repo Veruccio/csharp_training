@@ -79,7 +79,7 @@ namespace WebAddressbookTests
             }
             set
             {
-                ContactDetails = value;
+                contactDetails = value;
             }
         }
 

@@ -31,6 +31,7 @@ namespace WebAddressbookTests
 
         [Column(Name = "group_id"), PrimaryKey, Identity]
         public string Id { get; set; }
+        public bool ContactId { get; private set; }
 
         public static List<GroupData> GetAll()
         {
@@ -70,6 +71,16 @@ namespace WebAddressbookTests
                 return 1;
             }
             return Name.CompareTo(other.Name);
+        }
+
+        public List<ContactData> GetContacts()
+        {
+            using (AddressbookDB db = new AddressbookDB())
+            {
+                return (from c in db.Contacts
+                        from gcr in db.GCR.Where(p => p.GroupId == Id && p.ContactId == c.Id)
+                        select c).Distinct().ToList();
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ using OpenQA.Selenium.Firefox;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class AddContactTests : AuthTestBase
+    public class AddContactTests : ContactTestBase
     {
         public static IEnumerable<ContactData> RandomContactDataProvider()
         {

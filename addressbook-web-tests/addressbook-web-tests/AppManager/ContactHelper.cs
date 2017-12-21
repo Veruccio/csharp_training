@@ -40,6 +40,15 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public ContactHelper Modify(ContactData contact, ContactData newData)
+        {
+            EditContact(contact.Id);
+            FillNewContact(newData);
+            SubmitContactModification();
+            ReturnToContactsPage();
+            return this;
+        }
+
         public ContactHelper Remove(ContactData contact)
         {
             manager.Navigator.OpenHomePage();
@@ -94,13 +103,19 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public void EditContact(int index)
+        public ContactHelper EditContact(int index)
         {
             driver.FindElements(By.Name("entry"))[index]
                 .FindElements(By.TagName("td"))[7]
                 .FindElement(By.TagName("a")).Click();
             //driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
-            //return this;
+            return this;
+        }
+
+        public ContactHelper EditContact(String id)
+        {
+            driver.FindElement(By.XPath("(//img[@alt='Edit'] and [href='edit.php?id={0})")).Click();
+            return this;
         }
 
         public ContactHelper SubmitContactModification()

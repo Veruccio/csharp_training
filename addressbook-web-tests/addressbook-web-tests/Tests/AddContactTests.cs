@@ -6,6 +6,7 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Linq;
 using Newtonsoft.Json;
 using Excel = Microsoft.Office.Interop.Excel;
 using NUnit.Framework;
@@ -50,13 +51,13 @@ namespace WebAddressbookTests
 
         public void AddContactTest(ContactData contact)
         {
-            List<ContactData> oldContacts = app.Contacts.GetContactsList();
+            List<ContactData> oldContacts = ContactData.GetAll();
 
             app.Contacts.CreateNewContact(contact);
 
             Assert.AreEqual(oldContacts.Count + 1, app.Contacts.GetContactCount());
 
-            List<ContactData> newContacts = app.Contacts.GetContactsList();
+            List<ContactData> newContacts = ContactData.GetAll();
 
             oldContacts.Add(contact);
             oldContacts.Sort();

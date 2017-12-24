@@ -209,8 +209,13 @@ namespace WebAddressbookTests
                 {
                     IList<IWebElement> cells = driver.FindElements(By.TagName("td"));
                     string Id = element.FindElement(By.Name("entry")).GetAttribute("value");
-                    var lastName = cells[1].Text;
-                    var firstName = cells[2].Text;
+                    string lastName = cells[1].Text;
+                    string firstName = cells[2].Text;
+
+                    contactCache.Add(new ContactData(firstName, lastName)
+                        {
+                        Id = Id
+                            });
                 }
             }
             return new List<ContactData> (contactCache);

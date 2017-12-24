@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-
+using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
@@ -25,6 +25,36 @@ namespace WebAddressbookTests
             FillNewContact(contact);
             SubmitNewContact();
             ReturnToContactsPage();
+            return this;
+        }
+
+        public ContactHelper AddContactToGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigator.OpenHomePage();
+            ClearGroupFilter();
+            SelectContact(contact.Id);
+            SelectGroupToAdd(group.Name);
+            CommitAddingContactToGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+            return this;
+        }
+
+        public ContactHelper CommitAddingContactToGroup()
+        {
+            driver.FindElement(By.Name("add")).Click();
+            return this;
+        }
+            
+        public ContactHelper SelectGroupToAdd(string name)
+        {
+            new SelectElement(driver.FindElement(By.Name("to_group"))).SelectByText(name);
+            return this;
+        }
+
+        public ContactHelper ClearGroupFilter()
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
             return this;
         }
 
@@ -97,9 +127,9 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper SelectContact(String id)
+        public ContactHelper SelectContact(String contactId)
         {
-            driver.FindElement(By.XPath("//table[@id='maintable' and @value='"+id+"'])")).Click();
+            driver.FindElement(By.Id(contactId)).Click();
             return this;
         }
 

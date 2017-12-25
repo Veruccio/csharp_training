@@ -46,10 +46,7 @@ namespace addressbook_test_data_generators
                 {
                     contacts.Add(new ContactData(TestBase.GenerateRandomString(10), TestBase.GenerateRandomString(10))
                     {
-                        Firstname = TestBase.GenerateRandomString(10),
-                        Lastname = TestBase.GenerateRandomString(10)
                     });
-
                 }
             }
 

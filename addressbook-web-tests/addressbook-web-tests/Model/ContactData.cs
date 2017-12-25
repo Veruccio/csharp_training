@@ -14,7 +14,7 @@ namespace WebAddressbookTests
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
-        private object contactDetails;
+        private string contactDetails;
 
         public ContactData()
         {
@@ -83,7 +83,7 @@ namespace WebAddressbookTests
             {
                 if (contactDetails != null)
                 {
-                    return ContactDetails;
+                    return contactDetails;
                 }
                 else
                 {

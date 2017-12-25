@@ -28,6 +28,8 @@ namespace WebAddressbookTests
             return this;
         }
 
+        //ADDING CONTACT TO GROUP
+
         public ContactHelper AddContactToGroup(ContactData contact, GroupData group)
         {
             manager.Navigator.OpenHomePage();
@@ -55,6 +57,30 @@ namespace WebAddressbookTests
         public ContactHelper ClearGroupFilter()
         {
             new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
+            return this;
+        }
+
+        //REMOVING CONTACT FROM GROUP
+
+        public ContactHelper RemoveContactFromGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigator.OpenHomePage();
+            ClearGroupFilter();
+            SelectGroupContactToBeRemovedFrom(group.Name);
+            SelectContact(contact.Id);
+            RemoveFromGroup();
+            return this;
+        }
+
+        public ContactHelper RemoveFromGroup()
+        {
+            driver.FindElement(By.CssSelector("input[name=\"remove\"]")).Click();
+            return this;
+        }
+
+        public ContactHelper SelectGroupContactToBeRemovedFrom(string name)
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText(name);
             return this;
         }
 
@@ -120,6 +146,7 @@ namespace WebAddressbookTests
             contactCache = null;
             return this;
         }
+
 
         public ContactHelper SelectContact(int index)
         {

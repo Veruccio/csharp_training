@@ -11,6 +11,7 @@ namespace WebAddressbookTests
     public class AddingContactToGroupTests : AuthTestBase
     {
         [Test]
+
         public void TestAddingContactToGroup()
         {
             GroupData group = GroupData.GetAll()[0];

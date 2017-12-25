@@ -66,9 +66,11 @@ namespace WebAddressbookTests
         {
             manager.Navigator.OpenHomePage();
             ClearGroupFilter();
-            SelectGroupContactToBeRemovedFrom(group.Name);
+            SelectGroupFromFilter(group.Name);
             SelectContact(contact.Id);
             RemoveFromGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                 .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
             return this;
         }
 
@@ -78,9 +80,9 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper SelectGroupContactToBeRemovedFrom(string name)
+        public ContactHelper SelectGroupFromFilter(string groupName)
         {
-            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText(name);
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText(groupName);
             return this;
         }
 

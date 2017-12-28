@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using NUnit;
+using AutoItX3Lib;
 
 
 namespace addressbook_tests_autoit
@@ -12,7 +14,7 @@ namespace addressbook_tests_autoit
     {
         public ApplicationManager app;
 
-        //[TestFixtureSetUp]
+        [TestFixtureSetUp]
 
         public void InitApplication()
         {
@@ -20,7 +22,7 @@ namespace addressbook_tests_autoit
         }
 
 
-        //[TestFixtureTearDown]
+        [TestFixtureTearDown]
 
         public void stopApplication()
         {

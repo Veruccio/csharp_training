@@ -15,6 +15,11 @@ namespace addressbook_tests_autoit
 
         public GroupHelper(ApplicationManager manager) : base(manager) { }
 
+        internal bool IsGroupCreated()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<GroupData> GetGroupList()
         {
             List<GroupData> list = new List<GroupData>();
@@ -40,6 +45,18 @@ namespace addressbook_tests_autoit
             return list;
         }
 
+        public void Remove(int v)
+        {
+            OpenGroupsDialog();
+
+            //
+        }
+
+        public double GetGroupCount()
+        {
+            //
+        }
+
 
         public void Add(GroupData newGroup)
         {
@@ -49,6 +66,8 @@ namespace addressbook_tests_autoit
             aux.Send("{Enter}");
             CloseGroupsDialog();
         }
+
+
 
         private void CloseGroupsDialog()
         {

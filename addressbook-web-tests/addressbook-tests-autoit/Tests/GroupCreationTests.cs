@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using AutoItX3Lib;
 
 namespace addressbook_tests_autoit
 {
@@ -8,7 +9,7 @@ namespace addressbook_tests_autoit
     public class GroupCreationTests : TestBase
     {
         [Test]
-        public void TestGroupCreation()
+        public void GroupCreationTest()
         {
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
@@ -25,8 +26,6 @@ namespace addressbook_tests_autoit
             newGroups.Sort();
 
             Assert.AreEqual(oldGroups, newGroups);
-
-
         }
     }
 }

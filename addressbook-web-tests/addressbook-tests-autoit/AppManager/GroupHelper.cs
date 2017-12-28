@@ -15,11 +15,6 @@ namespace addressbook_tests_autoit
 
         public GroupHelper(ApplicationManager manager) : base(manager) { }
 
-        internal bool IsGroupCreated()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<GroupData> GetGroupList()
         {
             List<GroupData> list = new List<GroupData>();
@@ -45,6 +40,15 @@ namespace addressbook_tests_autoit
             return list;
         }
 
+        public void Add(GroupData newGroup)
+        {
+            OpenGroupsDialog();
+            InitGroupCreation();
+            FillGroupForm(newGroup);
+            SubmitGroupCreation();
+            CloseGroupsDialog();
+        }
+
         public void Remove(int v)
         {
             OpenGroupsDialog();
@@ -52,22 +56,31 @@ namespace addressbook_tests_autoit
             //
         }
 
-        public double GetGroupCount()
+
+        public void FillGroupForm(GroupData newGroup)
+        {
+            aux.Send(newGroup.Name);
+        }
+
+        public void SubmitGroupCreation()
+        {
+            aux.Send("{Enter}");
+        }
+
+        public void InitGroupCreation()
+        {
+            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d53");
+        }
+
+        internal bool IsGroupCreated()
         {
             //
         }
 
-
-        public void Add(GroupData newGroup)
+        public double GetGroupCount()
         {
-            OpenGroupsDialog();
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d53");
-            aux.Send(newGroup.Name);
-            aux.Send("{Enter}");
-            CloseGroupsDialog();
+            //
         }
-
-
 
         private void CloseGroupsDialog()
         {

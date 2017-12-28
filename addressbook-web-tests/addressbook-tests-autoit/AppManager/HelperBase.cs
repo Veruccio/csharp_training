@@ -4,8 +4,6 @@ using System.Text;
 using AutoItX3Lib;
 
 
-
-
 namespace addressbook_tests_autoit
 {
     public class HelperBase

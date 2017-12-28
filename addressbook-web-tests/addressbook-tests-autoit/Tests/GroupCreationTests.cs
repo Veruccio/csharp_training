@@ -9,7 +9,7 @@ namespace addressbook_tests_autoit
     public class GroupCreationTests : TestBase
     {
         [Test]
-        public void GroupCreationTest()
+        public void GroupCreationTestAutoIt()
         {
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 

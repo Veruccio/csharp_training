@@ -15,6 +15,11 @@ namespace addressbook_tests_autoit
 
         public GroupHelper(ApplicationManager manager) : base(manager) { }
 
+        internal bool IsGroupCreated()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<GroupData> GetGroupList()
         {
             List<GroupData> list = new List<GroupData>();
@@ -40,6 +45,11 @@ namespace addressbook_tests_autoit
             return list;
         }
 
+        internal double GetGroupCount()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Add(GroupData newGroup)
         {
             OpenGroupsDialog();
@@ -52,10 +62,21 @@ namespace addressbook_tests_autoit
         public void Remove(int v)
         {
             OpenGroupsDialog();
+            SelectGroup();
+            DeleteGroup();
+            CloseGroupsDialog();
 
-            //
         }
 
+        private void DeleteGroup()
+        {
+            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d51");
+        }
+
+        private void SelectGroup()
+        {
+            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51");
+        }
 
         public void FillGroupForm(GroupData newGroup)
         {
@@ -72,22 +93,13 @@ namespace addressbook_tests_autoit
             aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d53");
         }
 
-        internal bool IsGroupCreated()
-        {
-            //
-        }
 
-        public double GetGroupCount()
-        {
-            //
-        }
-
-        private void CloseGroupsDialog()
+        public void CloseGroupsDialog()
         {
             aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d54");
         }
 
-        private void OpenGroupsDialog()
+        public void OpenGroupsDialog()
         {
             aux.ControlClick(WINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d512");
             aux.WinWait(GROUPWINTITLE);

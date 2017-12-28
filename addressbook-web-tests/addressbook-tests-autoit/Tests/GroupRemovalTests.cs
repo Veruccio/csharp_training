@@ -12,14 +12,14 @@ namespace addressbook_tests_autoit.Tests
     class GroupRemovalTests : TestBase
     {
         [Test]
-        public void GroupRemovalTest()
+        public void GroupRemovalTestAutoIt()
         {
 
             if (!app.Groups.IsGroupCreated())
             {
                 GroupData newGroup = new GroupData()
                 {
-                    Name = "test"
+                    Name = "vera"
                 };
                 app.Groups.Add(newGroup);
             }

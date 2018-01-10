@@ -14,7 +14,7 @@ namespace addressbook_tests_autoit
     {
         public ApplicationManager app;
 
-        //[TestFixtureSetUp]
+        [TestFixtureSetUp]
 
         public void InitApplication()
         {
@@ -22,7 +22,7 @@ namespace addressbook_tests_autoit
         }
 
 
-        //[TestFixtureTearDown]
+        [TestFixtureTearDown]
 
         public void stopApplication()
         {

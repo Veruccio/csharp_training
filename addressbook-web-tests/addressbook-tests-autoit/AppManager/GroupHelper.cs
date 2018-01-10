@@ -15,15 +15,6 @@ namespace addressbook_tests_autoit
 
         public GroupHelper(ApplicationManager manager) : base(manager) { }
 
-        public bool IsGroupCreated()
-        {
-            OpenGroupsDialog();
-            string count = aux.ControlTreeView(
-                       GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51",
-                       "GetText", "#0|" , "");
-
-        }
-
         public List<GroupData> GetGroupList()
         {
             List<GroupData> list = new List<GroupData>();
@@ -55,6 +46,25 @@ namespace addressbook_tests_autoit
             return int.Parse(aux.ControlTreeView(GROUPWINTITLE, ""
                 , "WindowsForms10.SysTreeView32.app.0.2c908d51", "GetItemCount", "#0", ""));
         }
+
+        public void AddGroupIfNotCreated()
+        {
+            OpenGroupsDialog();
+
+            string count = aux.ControlTreeView(
+                       GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51",
+                       "GetText", "#0|", "");
+
+
+            if (int.Parse(count) == 1)
+            {
+                Add(new GroupData()
+                {
+                    Name = "VeraNewGroup"
+                });
+            }
+        }
+
 
         public void Add(GroupData newGroup)
         {

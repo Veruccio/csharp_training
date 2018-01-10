@@ -11,20 +11,21 @@ namespace addressbook_tests_autoit.Tests
 
     class GroupRemovalTests : TestBase
     {
+
+        [SetUp]
+
+        public void Init()
+        {
+            app.Groups.AddGroupIfNotCreated();
+        }
+
         [Test]
+
         public void GroupRemovalTestAutoIt()
         {
 
-            if (!app.Groups.IsGroupCreated())
-            {
-                GroupData newGroup = new GroupData()
-                {
-                    Name = "vera"
-                };
-                app.Groups.Add(newGroup);
-            }
-
             List<GroupData> oldGroups = app.Groups.GetGroupList();
+            GroupData toBeRemoved = oldGroups[0];
 
             app.Groups.Remove(0);
 

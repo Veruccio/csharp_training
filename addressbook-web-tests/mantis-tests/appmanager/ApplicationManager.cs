@@ -16,6 +16,9 @@ namespace mantis_tests
         protected IWebDriver driver;
         protected string baseURL;
 
+        public RegistrationHelper Registration { get;  set; }
+        public FtpHelper Ftp { get;  set; }
+
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
@@ -25,6 +28,8 @@ namespace mantis_tests
             options.UseLegacyImplementation = true;
             driver = new FirefoxDriver(options);
             baseURL = "http://localhost/";
+            Registration = new RegistrationHelper(this);
+            Ftp = new FtpHelper(this);
 
         }
 

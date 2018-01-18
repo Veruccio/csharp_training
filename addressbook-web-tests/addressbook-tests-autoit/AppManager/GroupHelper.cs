@@ -53,7 +53,7 @@ namespace addressbook_tests_autoit
 
             string count = aux.ControlTreeView(
                        GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51",
-                       "GetText", "#0|", "");
+                       "GetItemCount", "#0|", "");
 
 
             if (int.Parse(count) == 1)

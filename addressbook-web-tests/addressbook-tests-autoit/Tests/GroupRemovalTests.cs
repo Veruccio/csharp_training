@@ -23,7 +23,6 @@ namespace addressbook_tests_autoit.Tests
 
         public void GroupRemovalTestAutoIt()
         {
-
             List<GroupData> oldGroups = app.Groups.GetGroupList();
             GroupData toBeRemoved = oldGroups[0];
 
